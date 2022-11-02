@@ -1,19 +1,22 @@
 import re
 from bs4 import BeautifulSoup
 import requests
-from search import search_links
+from search import search_links, filter_link, ignore_link, verificar_link
 
 all_link = []
 
 
 def main():
-    url = "https://www.facebook.com/"
+    url = "https://br.pinterest.com/"
+    ignore_link(url)
     search = search_links(url)
     for s in search:
         google_hacking(s)
-    for i in all_link:
-        print("-" + i[0])
-    print(f"quantidade de links encontrados: {len(all_link)}")
+    links = filter_link(all_link, url)
+    for i in links:
+        print(i[0])
+    print(f"quantidade de links encontrados: {len(links)}")
+    verificar_link(all_link)
 
 
 def google_hacking(url):
