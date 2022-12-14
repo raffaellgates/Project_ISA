@@ -1,0 +1,13 @@
+{% extends "base.html" %}
+
+{% block title %}Dados Sensiveis{% endblock %}
+
+{% block content %}
+<h3>Informe a url do site Alvo</h3>
+<form method="POST" class="post-form">{% csrf_token %}
+    <div class="input-search">
+    {{ form.as_p }}
+    </div>
+    <button type="submit" class="save btn btn-secondary">Search</button>
+</form>
+{% endblock %}

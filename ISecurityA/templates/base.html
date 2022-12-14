@@ -1,0 +1,14 @@
+{% load static %}
+<html>
+<head>
+    <title>{% block title %}{% endblock %}</title>
+    <link rel="stylesheet" href="{% static 'main.css' %}" />
+</head>
+<body>
+    <h1>ISA</h1>
+    <h2>Ferramenta de Análise de Vulnerabilidade</h2>
+    <hr>
+    <!-- <img src="{% static 'images/sitelogo.png' %}" alt="Logo"> -->
+    {% block content %}{% endblock %}
+</body>
+</html>

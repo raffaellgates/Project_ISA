@@ -1,0 +1,23 @@
+h1{
+    text-align: center;
+}
+h2{
+    text-align: center;
+}
+h3{
+    text-align: center;
+}
+h4{
+    text-align: left;
+}
+body{
+    background-color: rgb(212, 211, 211);
+}
+
+.post-form{
+    text-align: center;
+    top: auto;
+}
+
+.input-search{
+}

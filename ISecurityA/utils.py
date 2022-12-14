@@ -48,21 +48,21 @@ def search(keyword, url, depth, new):
         except Exception:
             continue
 
-    else:
-        search_key = ('.'*20) + keyword + ('.'*20)
-        ocorrencias = re.findall(search_key, text, re.IGNORECASE)
-        i = len(ocorrencias)
-        if i > 0:
-        	print("%s, %d resultados" %(url,i))
-        	historico.append([i, url, keyword])
-        if depth > 0:
-            depth -= 1
-            quantidade_link = len(urls_normais)
-            for i in range(quantidade_link):
-                try:
-                	search(keyword=keyword, url=urls_normais[i], depth=depth, new=True)
-                except Exception:
-                    continue
+        else:
+            search_key = ('.'*20) + keyword + ('.'*20)
+            ocorrencias = re.findall(search_key, text, re.IGNORECASE)
+            i = len(ocorrencias)
+            if i > 0:
+                print("%s, %d resultados" %(url,i))
+                historico.append([i, url, keyword])
+            if depth > 0:
+                depth -= 1
+                quantidade_link = len(urls_normais)
+                for i in range(quantidade_link):
+                    try:
+                        search(keyword=keyword, url=urls_normais[i], depth=depth, new=True)
+                    except Exception:
+                        continue
 
 
 

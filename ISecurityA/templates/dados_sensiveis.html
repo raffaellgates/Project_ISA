@@ -1,0 +1,51 @@
+{% extends "base.html" %}
+
+{% block title %}Dados Sensiveis{% endblock %}
+
+{% block content %}
+
+<h4>Dados Sensiveis</h4>
+<p>Para obter dados sensíveis sobre o alvo pesquisado, a ferramenta está usando uma técnica
+que consiste na utilização dos operadores, pré-definidos pela ferramenta, utilizando o buscador do Google para realizar buscas avançadas, criando combinações para filtrar e 
+localizar sequências específicas de texto nos resultados de busca, como versões, mensagens de erro, dados, cartões de bancos, documentos, senhas, telefones, arquivos sensíveis. 
+E as possíveis informações ou arquivos que foram descobertos, estão nos links abaixo:</p>
+<ol>
+{% for dado in dados_sensiveis_list %}
+    <li><a href={{ dado.link }}>{{dado}}</a></li>
+{% endfor %}
+</ol>
+
+<h4>Arquivos Encontrados:</h4>
+<ol>
+    {% for doc in docs_list %}
+        <li><a href={{ doc.link }}>{{doc}}</a></li>
+    {% endfor %}
+</ol>
+
+
+<h4>Vulnerabilidade XSS</h4>
+<p>O ataque XSS, Cross-site scripting, consiste em uma vulnerabilidade causada pela falha nas validações dos parâmetros 
+de entrada do usuário e resposta do servidor na aplicação web. Esse ataque permite que o código HTML seja inserido de maneira 
+arbitrária no navegador do usuário-alvo. O responsável pelo ataque executa instruções no navegador da vítima usando um aplicativo exploit web para modificar estruturas do documento HTML, 
+sendo possível também realizar phishing. A ferramenta busca sites associado a url alvo desenvolvidos em ASP.NET que contém algum formulário na página, no qual tem mais probabilidade de 
+estar vulnerável a esse tipo de ataque. Segue os link que possivelmente possuem essa falha:</p>
+<ol>
+{% for xss in xss_list %}
+    <li><a href={{ xss.link }}>{{xss}}</a></li>
+{% endfor %}
+</ol>
+
+
+<h4>Vulnerabilidade SQL Injector</h4>
+O SQL Injector é um tipo de ameaça de segurança que se aproveita de falhas em sistemas que interagem com bases de dados via SQL. Ele ocorre quando o 
+atacante consegue inserir uma série de instruções SQL dentro de uma consulta (query) através da manipulação das entradas de dados de uma aplicação. 
+A ferramenta busca sites associado a url alvo desenvolvidos em php, no qual tem mais probabilidade de estar vulnerável a esse tipo de ataque. 
+Ao encontrar o site, o buscador incrementa na url uma aspa simples e repete a requisição afim de retornar algum erro de query do banco de dados do alvo, 
+assim tendo grande probabilidade desse site está a vulnerável a esse tipo de ataque, Segue os link que possivelmente possuem essa falha associado a url alvo:
+<ol>
+{% for sql in sql_list %}
+    <li><a href={{ sql.link }}>{{sql}}</a></li>
+{% endfor %}
+</ol>
+
+{% endblock %}
